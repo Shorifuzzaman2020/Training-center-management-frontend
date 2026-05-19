@@ -166,10 +166,10 @@ const page = () => {
             </Link>
             <div className="mt-6">
               <p className="text-white leading-relaxed text-sm">
-                ReadymadeUI is a library of pre-designed UI components <br />{" "}
-                built for Tailwind CSS. It offers a collection of versatile and{" "}
+                KINEO is a digital learning platform. We offer multiple<br />{" "}
+                type of skill development training. All trainee get the {" "}
                 <br />
-                ready-to-use components.
+                same priority from us.
               </p>
             </div>
           </div>
@@ -227,7 +227,7 @@ const page = () => {
                     href="javascript:void(0)"
                     className="text-white text-sm font-normal"
                   >
-                    Hubspot
+                    Online
                   </Link>
                 </li>
                 <li>
@@ -235,7 +235,7 @@ const page = () => {
                     href="javascript:void(0)"
                     className="text-white text-sm font-normal"
                   >
-                    Integration Services
+                    Offline (On Campus)
                   </Link>
                 </li>
                 <li>
@@ -243,17 +243,17 @@ const page = () => {
                     href="javascript:void(0)"
                     className="text-white text-sm font-normal"
                   >
-                    Marketing Glossar
+                    Hybrid (Online and Offline)
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="javascript:void(0)"
                     className="text-white text-sm font-normal"
                   >
                     UIPath
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
 
@@ -430,7 +430,7 @@ const page = () => {
           </ul>
 
           <p className="text-gray-400 text-sm md:ml-auto">
-            © ReadymadeUI. All rights reserved.
+            © KINIO. All rights reserved.
           </p>
         </div>
       </footer>
