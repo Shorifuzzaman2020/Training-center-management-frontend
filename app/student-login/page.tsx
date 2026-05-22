@@ -1,95 +1,15 @@
-// "use client";
-// import axios from "axios";
-// import { useRouter } from "next/navigation";
-// import { useState, useEffect } from "react";
-
-// interface User {
-//   email: string;
-//   password: string;
-//   role: string[];
-// }
-
-// const Page = () => {
-//   const router = useRouter();
-
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [users, setUsers] = useState<User[]>([]);
-//   const fetchUsers = async () => {
-//     const res = await axios.get("http://localhost:5000/api/v1/employees");
-//     setUsers(res.data.data);
-//   };
-//   useEffect(() => {
-//     fetchUsers();
-//   }, []);
-
-//   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-
-//     const user = users.find(
-//       (u) => u.email === email && u.password === password,
-//     );
-
-//     if (!user) {
-//       alert("Invalid credentials");
-//       return;
-//     }
-
-//     const role = user.role[0]; // first role
-//     if (role ==="admin"){
-//         router.push(`/dashboard`);
-//     } else
-//     router.push(`/${role}-dashboard`);
-//   };
-
-//   return (
-//     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-//       <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-//         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
-
-//         <form onSubmit={handleLogin} className="space-y-4">
-//           <input
-//             type="email"
-//             placeholder="Email"
-//             className="w-full px-4 py-2 border rounded-lg"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//           />
-
-//           <input
-//             type="password"
-//             placeholder="Password"
-//             className="w-full px-4 py-2 border rounded-lg"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//           />
-
-//           <button
-//             type="submit"
-//             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
-//           >
-//             Login
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Page;
 
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Eye, EyeOff, Mail, Lock, LogIn } from "lucide-react";
-import Link from "next/link";
 
 interface User {
   _id: string;
   email: string;
   password: string;
-  role: string[];
+  role: string;
   name?: string;
 }
 
@@ -105,7 +25,7 @@ const Page = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/employees");
+      const res = await axios.get("http://localhost:5000/api/v1/admissions");
       setUsers(res.data.data);
     } catch (err) {
       console.error("Failed to fetch users:", err);
@@ -150,20 +70,20 @@ const Page = () => {
       return;
     }
 
-    const role = user.role[0];
+    const userrole = user.role;
     localStorage.setItem("userId", user._id);
 
     // Store authentication data
     localStorage.setItem("authToken", "dummy-token-" + Date.now());
-    localStorage.setItem("userRole", role);
+    localStorage.setItem("userRole", userrole);
     localStorage.setItem("userEmail", email);
     localStorage.setItem("userName", user.name || email.split("@")[0]);
 
     // Redirect based on role
-    if (role === "admin") {
+    if (userrole === "admin") {
       router.push("/dashboard");
     } else {
-      router.push(`/${role}-dashboard`);
+      router.push(`/${userrole}-dashboard`);
     }
 
     setIsLoading(false);
@@ -255,12 +175,13 @@ const Page = () => {
 
             {/* Remember Me & Forgot Password */}
             <div className="flex items-center justify-between">
-              <div className="">
-                <p className=" text-blue-600">Are you Student?</p>
-              </div>
-              <div className="">
-                <p className="ml-2 text-sm font-bold text-green-600"><Link href="/student-login">Login here</Link></p>
-              </div>
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+                <span className="ml-2 text-sm text-gray-600">Remember me</span>
+              </label>
               {/* <a
                 href="#"
                 className="text-sm text-blue-600 hover:text-blue-700 hover:underline"

@@ -30,6 +30,8 @@ export default function MarksPage() {
         const lock: any = {};
 
         res.data.data.forEach((r: any) => {
+          if (!r.student || !r.student._id) return;
+
           m[r.student._id] = r.marks;
           lock[r.student._id] = r.isLocked;
         });

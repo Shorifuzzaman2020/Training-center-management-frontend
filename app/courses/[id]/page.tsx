@@ -39,12 +39,18 @@ export default function CourseDetails({ params }: any) {
 
       {/* Apply Button */}
 
-      <Link
+      {/* <Link
         href={`/admission/${course._id}`}
         className="bg-indigo-600 text-white px-8 py-3 rounded-lg"
       >
         Apply Now
-      </Link>
+      </Link> */}
+      <button
+        onClick={() => (window.location.href = `/admission/${course._id}`)}
+        className="bg-green-500 text-white px-8 py-3 rounded-lg"
+      >
+        Apply Now
+      </button>
     </div>
   );
 }

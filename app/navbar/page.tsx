@@ -34,37 +34,7 @@ type Course = {
   name: string;
 };
 
-// const renderHoverContent = (side: string) => {
-//     switch (side) {
-
-//         case "SERVICES":
-//             return (
-//                 <ul className="flex flex-col gap-4 py-2.5 w-60">
-//                     <li><Link href="/services" className="block border-b pb-1">Service Version 1</Link></li>
-//                     <li><Link href="/shop" className="block border-b pb-1">Service Version 2</Link></li>
-//                     <li><Link href="/services" className="block border-b pb-1">Service Version 3</Link></li>
-//                     <li><Link href="/team" className="block border-b pb-1">Service Version 4</Link></li>
-//                     <li><Link href="/jobs" className="block border-b pb-1">Jobs</Link></li>
-//                     <li><Link href="/blog" className="block border-b pb-1">Blog</Link></li>
-//                     <li><Link href="/contact" className="block border-b pb-1">Contact</Link></li>
-//                 </ul>
-//             );
-//     }
-// };
-// const NAV_LINKS = [
-//     { name: "HOME", href: "/" },
-//     { name: "PAGES", href: "/pages" },
-//     { name: "ABOUT", href: "/about" },
-//     { name: "SERVICES", href: "/services" },
-//     { name: "TEAM", href: "/team" },
-//     { name: "JOBS", href: "/jobs" },
-//     { name: "BLOG", href: "/blog" },
-//     { name: "CONTACT", href: "/contact" },
-// ];
-
 const Page = () => {
-  
-
   // const frameworks = ["English", "French", "Relish"]
   const HOVER_CARD_SIDES = [
     "HOME",
@@ -130,7 +100,6 @@ const Page = () => {
       "_blank",
     );
   };
-  
 
   const [showModal, setShowModal] = useState(false);
   const [nid, setNid] = useState("");
@@ -143,7 +112,7 @@ const Page = () => {
   }, []);
 
   /* HANDLERS */
-//   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  //   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const handleOpen = () => setShowModal(true);
 
@@ -155,10 +124,7 @@ const Page = () => {
   const handleSubmit = () => {
     if (!nid) return alert("Enter Student ID");
 
-    window.open(
-      `http://localhost:5000/api/v1/certificate/${nid}`, 
-      "_blank",
-    );
+    window.open(`http://localhost:5000/api/v1/certificate/${nid}`, "_blank");
 
     handleClose();
   };
@@ -193,21 +159,6 @@ const Page = () => {
               </div>
             </div>
             <div className="flex justify-center items-center gap-3">
-              {/* <div>
-                                <Combobox items={frameworks}>
-                                    <ComboboxInput placeholder="English" />
-                                    <ComboboxContent>
-                                        <ComboboxEmpty>No items found.</ComboboxEmpty>
-                                        <ComboboxList>
-                                            {(item) => (
-                                                <ComboboxItem key={item} value={item}>
-                                                    {item}
-                                                </ComboboxItem>
-                                            )}
-                                        </ComboboxList>
-                                    </ComboboxContent>
-                                </Combobox>
-                            </div> */}
               <div>
                 <TiSocialFacebook className="text-white" />
               </div>
@@ -224,69 +175,11 @@ const Page = () => {
           </nav>
         </div>
       </div>
-      {/* <div className='border-b-2 bg-blue-900'>
-                <div className='flex justify-between items-center w-10/12 mx-auto py-3'>
-                    <div>
-                        <img src="https://i.ibb.co.com/DHyYyhDC/logo.png" alt="" />
-                    </div>
-                    <div>
-                        <div className="flex flex-wrap justify-center gap-2">
-
-                            {NAV_LINKS.map((item) => {
-
-                                // SERVICES
-                                if (item.name === "SERVICES") {
-                                    return (
-                                        <HoverCard key={item.name} openDelay={100} closeDelay={500}>
-                                            <HoverCardTrigger asChild>
-                                                <Button className="capitalize bg-white text-black border-none hover:bg-blue-400">
-                                                    {item.name}
-                                                </Button>
-                                            </HoverCardTrigger>
-
-                                            <HoverCardContent
-                                                side="bottom"
-                                                align="start"
-                                                sideOffset={10}
-                                                className="w-64 p-4"
-                                            >
-                                                {renderHoverContent(item.name)}
-                                            </HoverCardContent>
-                                        </HoverCard>
-                                    );
-                                }
-
-                                // ALL OTHER NAVIGATION
-                                return (
-                                    <Link key={item.name} href={item.href}>
-                                        <Button
-                                            variant="outline"
-                                            className="capitalize border-none hover:bg-blue-400"
-                                        >
-                                            {item.name}
-                                        </Button>
-                                    </Link>
-                                );
-                            })}
-                            <div className='bg-gray-300 text-center p-3 rounded'>
-                                <FaSearch />
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div> */}
 
       <header className="w-full bg-indigo-900 shadow-sm">
         <div className="w-10/12 mx-auto py-4 flex items-center justify-between">
           {/* LEFT SECTION */}
           <div className="flex items-center gap-6">
-            {/* All Categories Button */}
-            {/* <button className="flex items-center gap-2 bg-gray-100 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition">
-                            <Share2 size={16} />
-                            All Categories
-                            <ChevronDown size={16} />
-                        </button> */}
             <div>
               <img
                 src="/6849b90569768a13a6edcecf_kineo-mtc-logo.png"
@@ -325,21 +218,6 @@ const Page = () => {
                       </Link>
                     </li>
                   ))}
-                  {/* <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                                            Home 2
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                                            Home 3
-                                        </a>
-                                    </li> */}
                 </ul>
               </div>
             </div>
@@ -357,10 +235,6 @@ const Page = () => {
             >
               Pages <ChevronDown size={16} />
             </Link>
-
-            {/* <Link href="#" className="flex text-white items-center gap-1 hover:text-indigo-600">
-                            Blogs
-                        </Link> */}
 
             <Link
               href="../notices"
@@ -380,6 +254,14 @@ const Page = () => {
                   className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
                 >
                   Certificate
+                </button>
+                <button>
+                  <Link
+                    href="/login"
+                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                  >
+                    Login
+                  </Link>
                 </button>
               </div>
               {showModal && (
@@ -455,13 +337,7 @@ const Page = () => {
                       >
                         Home
                       </Link>
-                      {/* <Link
-                                                href="/blogs"
-                                                className="py-3 px-4 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
-                                                onClick={closeMobileMenu}
-                                            >
-                                                Blogs
-                                            </Link> */}
+
                       <Link
                         href="/about"
                         className="py-3 px-4 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
@@ -489,37 +365,6 @@ const Page = () => {
                 </div>
               )}
             </nav>
-            {/* Emergency Help */}
-            {/* <div className="hidden md:flex items-center gap-3">
-                            <div className="bg-indigo-50 p-2 rounded-full">
-                                <Phone size={18} className="text-indigo-600" />
-                            </div>
-                            <div className="text-sm">
-                                <p className="text-gray-500">Emergency Help!</p>
-                                <p className="font-semibold text-gray-800">
-                                    +1212-226-3126
-                                </p>
-                            </div>
-                        </div> */}
-
-            {/* Wishlist */}
-            {/* <div className="relative">
-                            <Heart className="text-gray-700 cursor-pointer hover:text-indigo-600" size={22} />
-                            <span className="absolute -top-2 -right-2 bg-yellow-400 text-xs px-1.5 rounded-full">
-                                0
-                            </span>
-                        </div> */}
-
-            {/* Cart */}
-            {/* <div className="flex items-center gap-2">
-                            <div className="relative">
-                                <ShoppingCart className="text-gray-700 cursor-pointer hover:text-indigo-600" size={22} />
-                                <span className="absolute -top-2 -right-2 bg-yellow-400 text-xs px-1.5 rounded-full">
-                                    0
-                                </span>
-                            </div>
-                            <span className="text-gray-700 font-medium">$0.00</span>
-                        </div> */}
           </div>
         </div>
       </header>
@@ -528,164 +373,3 @@ const Page = () => {
 };
 
 export default Page;
-
-// "use client";
-
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import Link from "next/link";
-// import { ChevronDown } from "lucide-react";
-// import { HiMenu, HiX } from "react-icons/hi";
-
-// type Course = {
-//   _id: string;
-//   name: string;
-// };
-
-// const Page = () => {
-//   const [courses, setCourses] = useState<Course[]>([]);
-//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-//   /* 🔥 CERTIFICATE STATE */
-//   const [showModal, setShowModal] = useState(false);
-//   const [nid, setNid] = useState("");
-
-//   /* LOAD COURSES */
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:5000/api/v1/courses")
-//       .then((res) => setCourses(res.data.data));
-//   }, []);
-
-//   /* HANDLERS */
-//   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
-//   const handleOpen = () => setShowModal(true);
-
-//   const handleClose = () => {
-//     setShowModal(false);
-//     setNid(""); // reset
-//   };
-
-//   const handleSubmit = () => {
-//     if (!nid) return alert("Enter Student ID");
-
-//     window.open(
-//       `http://localhost:5000/api/v1/certificate/${nid}`, // ✅ FIXED API
-//       "_blank",
-//     );
-
-//     handleClose();
-//   };
-
-//   return (
-//     <div className="sticky top-0 z-50 w-full bg-indigo-900">
-//       <header className="w-10/12 mx-auto py-4 flex items-center justify-between">
-//         {/* LOGO */}
-//         <img
-//           src="/6849b90569768a13a6edcecf_kineo-mtc-logo.png"
-//           alt="logo"
-//           className="h-12"
-//         />
-
-//         {/* NAV */}
-//         <nav className="hidden lg:flex items-center gap-8 text-white font-medium">
-//           <Link href="/">Home</Link>
-
-//           <div className="relative group">
-//             <span className="flex items-center gap-1 cursor-pointer">
-//               Courses <ChevronDown size={16} />
-//             </span>
-
-//             <div className="absolute top-full mt-3 w-48 bg-white text-black shadow rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
-//               {courses.map((course) => (
-//                 <Link
-//                   key={course._id}
-//                   href={`/all-courses?course=${course.name}`}
-//                   className="block px-4 py-2 hover:bg-gray-200"
-//                 >
-//                   {course.name}
-//                 </Link>
-//               ))}
-//             </div>
-//           </div>
-
-//           <Link href="/notices">Notice</Link>
-//         </nav>
-
-//         {/* RIGHT SIDE */}
-//         <div className="flex items-center gap-4">
-//           {/* 🔥 CERTIFICATE BUTTON */}
-//           <button
-//             onClick={handleOpen}
-//             className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-//           >
-//             Certificate
-//           </button>
-
-//           {/* MOBILE MENU BUTTON */}
-//           <button
-//             onClick={toggleMobileMenu}
-//             className="lg:hidden text-white text-3xl"
-//           >
-//             {isMobileMenuOpen ? <HiX /> : <HiMenu />}
-//           </button>
-//         </div>
-//       </header>
-
-//       {/* 🔥 MODAL */}
-//       {showModal && (
-//         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-//           <div className="bg-white p-6 rounded-lg w-80 shadow-lg">
-//             <h2 className="text-lg font-bold mb-4">Enter Student ID (NID)</h2>
-
-//             <input
-//               type="text"
-//               value={nid}
-//               onChange={(e) => setNid(e.target.value)}
-//               placeholder="Enter NID"
-//               className="w-full border p-2 mb-4 rounded"
-//             />
-
-//             <div className="flex justify-end gap-2">
-//               <button
-//                 onClick={handleClose}
-//                 className="px-3 py-1 bg-gray-400 text-white rounded"
-//               >
-//                 Cancel
-//               </button>
-
-//               <button
-//                 onClick={handleSubmit}
-//                 className="px-3 py-1 bg-blue-600 text-white rounded"
-//               >
-//                 Generate
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-
-//       {/* MOBILE MENU */}
-//       {isMobileMenuOpen && (
-//         <div className="lg:hidden bg-white text-black p-4">
-//           <Link href="/" className="block py-2">
-//             Home
-//           </Link>
-//           <Link href="/notices" className="block py-2">
-//             Notice
-//           </Link>
-
-//           <button
-//             onClick={handleOpen}
-//             className="mt-3 px-4 py-2 bg-yellow-500 text-white rounded"
-//           >
-//             Certificate
-//           </button>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Page;

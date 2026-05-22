@@ -347,7 +347,6 @@
 //   );
 // }
 
-
 "use client";
 
 import axios from "axios";
@@ -362,13 +361,13 @@ export default function InstructorPage() {
   const [tab, setTab] = useState("attendance");
 
   const instructorId = localStorage.getItem("userId");
-// const instructorId = "69aface813b8e1a6d2384fdde"; // MongoDB থেকে trainer id
+  // const instructorId = "69aface813b8e1a6d2384fdde"; // MongoDB থেকে trainer id
 
   /* LOAD STUDENTS */
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/api/v1/instructor/students?instructorId=${instructorId}`
+        `http://localhost:5000/api/v1/instructor/students?instructorId=${instructorId}`,
       )
       .then((res) => setStudents(res.data.data));
   }, []);
@@ -378,9 +377,7 @@ export default function InstructorPage() {
     if (!date) return;
 
     axios
-      .get(
-        `http://localhost:5000/api/v1/instructor/attendance?date=${date}`
-      )
+      .get(`http://localhost:5000/api/v1/instructor/attendance?date=${date}`)
       .then((res) => {
         const map: any = {};
         res.data.data.forEach((d: any) => {
@@ -393,14 +390,14 @@ export default function InstructorPage() {
   /* LOAD MARKS */
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:5000/api/v1/instructor/marks?examType=final`
-      )
+      .get(`http://localhost:5000/api/v1/instructor/marks?examType=final`)
       .then((res) => {
         const m: any = {};
         const lock: any = {};
 
         res.data.data.forEach((r: any) => {
+          if (!r.student || !r.student._id) return;
+
           m[r.student._id] = r.marks;
           lock[r.student._id] = r.isLocked;
         });
@@ -420,7 +417,7 @@ export default function InstructorPage() {
 
     await axios.post(
       "http://localhost:5000/api/v1/instructor/attendance",
-      payload
+      payload,
     );
 
     alert("Saved");
@@ -434,10 +431,7 @@ export default function InstructorPage() {
       examType: "final",
     }));
 
-    await axios.post(
-      "http://localhost:5000/api/v1/instructor/marks",
-      payload
-    );
+    await axios.post("http://localhost:5000/api/v1/instructor/marks", payload);
 
     alert("Submitted");
   };
@@ -445,71 +439,6 @@ export default function InstructorPage() {
   return (
     <div className="p-6">
       <h1 className="text-xl font-bold mb-4">Instructor Panel</h1>
-
-      {/* <div className="flex gap-3 mb-4">
-        <button onClick={() => setTab("attendance")}>Attendance</button>
-        <button onClick={() => setTab("marks")}>Marks</button>
-      </div>
-
-      <input type="date" onChange={(e) => setDate(e.target.value)} />
-
-      <table className="w-full mt-4 border">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>{tab}</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {students.map((s) => (
-            <tr key={s._id}>
-              <td>{s.fullName}</td>
-
-              {tab === "attendance" && (
-                <td>
-                  <select
-                    value={attendance[s._id] ?? 1}
-                    onChange={(e) =>
-                      setAttendance({
-                        ...attendance,
-                        [s._id]: Number(e.target.value),
-                      })
-                    }
-                  >
-                    <option value={1}>Present</option>
-                    <option value={0}>Absent</option>
-                  </select>
-                </td>
-              )}
-
-              {tab === "marks" && (
-                <td>
-                  <input
-                    type="number"
-                    disabled={locked[s._id]}
-                    value={marks[s._id] || ""}
-                    onChange={(e) =>
-                      setMarks({
-                        ...marks,
-                        [s._id]: Number(e.target.value),
-                      })
-                    }
-                  />
-                </td>
-              )}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {tab === "attendance" && (
-        <button onClick={saveAttendance}>Save Attendance</button>
-      )}
-
-      {tab === "marks" && (
-        <button onClick={saveMarks}>Submit Marks</button>
-      )} */}
     </div>
   );
 }
