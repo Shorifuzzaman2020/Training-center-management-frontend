@@ -151,6 +151,18 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       ],
     },
     {
+      title: "Finance",
+      icon: <Users className="w-5 h-5" />,
+      links: [
+        {
+          name: "Revenue & Expenses",
+          href: "/dashboard/finance",
+          icon: <Users className="w-4 h-4" />,
+        },
+        
+      ],
+    },
+    {
       title: "System Configuration",
       icon: <Settings className="w-5 h-5" />,
       links: [
