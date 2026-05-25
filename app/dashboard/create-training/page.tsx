@@ -436,56 +436,88 @@ export default function TrainingManagementPage() {
 
     /* ---------------- SUBMIT ---------------- */
 
+    // const handleSubmit = async (e: any) => {
+
+    //     e.preventDefault();
+
+    //     const data = new FormData();
+
+    //     data.append("course", form.course);
+    //     data.append("category", form.category);
+    //     data.append("shortDescription", form.shortDescription);
+    //     data.append("longDescription", form.longDescription);
+
+    //     if (banner) data.append("bannerImage", banner);
+
+    //     gallery.forEach(img => data.append("galleryImages", img));
+
+    //     facilities.forEach(f => data.append("facilities[]", f));
+
+    //     try {
+
+    //         if (editId) {
+
+    //             await axios.patch(
+    //                 `http://localhost:5000/api/v1/trainings/${editId}`,
+    //                 data
+    //             );
+
+    //             toast.success("Training updated");
+
+    //         } else {
+
+    //             await axios.post(
+    //                 "http://localhost:5000/api/v1/trainings/create-training",
+    //                 data
+    //             );
+
+    //             toast.success("Training created");
+
+    //         }
+
+    //         setShowForm(false);
+    //         fetchTrainings();
+
+    //     } catch (error: any) {
+
+    //         toast.error(error?.response?.data?.message || "Operation failed");
+
+    //     }
+
+    // };
+
     const handleSubmit = async (e: any) => {
+    e.preventDefault();
 
-        e.preventDefault();
+    const data = new FormData();
 
-        const data = new FormData();
+    data.append("course", form.course);
+    data.append("category", form.category);
+    data.append("shortDescription", form.shortDescription);
+    data.append("longDescription", form.longDescription);
 
-        data.append("course", form.course);
-        data.append("category", form.category);
-        data.append("shortDescription", form.shortDescription);
-        data.append("longDescription", form.longDescription);
+    if (banner) data.append("bannerImage", banner);
 
-        if (banner) data.append("bannerImage", banner);
+    // Make sure 'galleryImages' matches your backend upload.array() field name exactly
+    gallery.forEach(img => data.append("galleryImages", img));
 
-        gallery.forEach(img => data.append("galleryImages", img));
+    // FIX: Remove the '[]' from the key name
+    facilities.forEach(f => data.append("facilities", f)); 
 
-        facilities.forEach(f => data.append("facilities[]", f));
-
-        try {
-
-            if (editId) {
-
-                await axios.patch(
-                    `http://localhost:5000/api/v1/trainings/${editId}`,
-                    data
-                );
-
-                toast.success("Training updated");
-
-            } else {
-
-                await axios.post(
-                    "http://localhost:5000/api/v1/trainings/create-training",
-                    data
-                );
-
-                toast.success("Training created");
-
-            }
-
-            setShowForm(false);
-            fetchTrainings();
-
-        } catch (error: any) {
-
-            toast.error(error?.response?.data?.message || "Operation failed");
-
+    try {
+        if (editId) {
+            await axios.patch(`http://localhost:5000/api/v1/trainings/${editId}`, data);
+            toast.success("Training updated");
+        } else {
+            await axios.post("http://localhost:5000/api/v1/trainings/create-training", data);
+            toast.success("Training created");
         }
-
-    };
-
+        setShowForm(false);
+        fetchTrainings();
+    } catch (error: any) {
+        toast.error(error?.response?.data?.message || "Operation failed");
+    }
+};
     return (
 
         <div className="max-w-7xl mx-auto p-10 bg-white shadow rounded">
