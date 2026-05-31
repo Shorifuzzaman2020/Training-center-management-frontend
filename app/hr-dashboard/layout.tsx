@@ -89,9 +89,14 @@ const HrDashboardLayout = ({ children }: { children: React.ReactNode }) => {
       href: "/hr-dashboard/employee-attendance",
       icon: <Calendar className="w-4 h-4" />,
     },
+    {
+      name: "Attendance Reports",
+      href: "/hr-dashboard/attendance-report",
+      icon: <Calendar className="w-4 h-4" />,
+    },
   ];
 
-  /* ✅ AUTH CHECK */
+  /* AUTH CHECK */
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     const role = localStorage.getItem("userRole");

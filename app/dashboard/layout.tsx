@@ -91,6 +91,22 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           href: "/dashboard/role-management",
           icon: <Shield className="w-4 h-4" />,
         },
+        {
+          name: "Attendance Report",
+          href: "/dashboard/attendance-report",
+          icon: <Users className="w-4 h-4" />,
+        },
+      ],
+    },
+    {
+      title: "Student Management",
+      icon: <Users className="w-5 h-5" />,
+      links: [
+        {
+          name: "Manage Students",
+          href: "/dashboard/student-filter",
+          icon: <Users className="w-4 h-4" />,
+        },
       ],
     },
     {
