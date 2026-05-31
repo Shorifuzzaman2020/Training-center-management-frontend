@@ -53,6 +53,7 @@ import {
   Users,
   ClipboardList,
   FileText,
+  BarChart3,
 } from "lucide-react";
 
 const InstructorDashboardLayout = ({
@@ -84,6 +85,11 @@ const InstructorDashboardLayout = ({
       name: "Marks",
       href: "/Instructor-dashboard/marks",
       icon: <FileText className="w-4 h-4" />,
+    },
+    {
+      name: "Attendance Report",
+      href: "/Instructor-dashboard/attendance-report",
+      icon: <BarChart3 className="w-4 h-4" />,
     },
   ];
 

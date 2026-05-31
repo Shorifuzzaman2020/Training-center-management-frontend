@@ -1,61 +1,4 @@
-// "use client";
 
-// import Link from "next/link";
-// import { usePathname } from "next/navigation";
-// import React from "react";
-
-// const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-//     const pathname = usePathname();
-
-//     const navLinks = [
-//         { name: "Manage Training", href: "/dashboard/create-training" },
-//         { name: "Manage Trainer", href: "/dashboard/assign-trainer" },
-//         { name: "Manage Category", href: "/dashboard/create-category"},
-//         { name: "Manage Banner", href: "/dashboard/dynamic-banner" },
-//         // { name: "Create User", href: "/dashboard/create-users"},
-//         // { name: "User List", href: "/dashboard/user-table"},
-//         // { name: "Create Service", href: "/dashboard/services"},
-//         { name: "Manage Staff", href: "/dashboard/create-staff"},
-//         { name: "Manage Role", href: "/dashboard/role-management"},
-//         { name: "Manage Course", href: "/dashboard/create-course"},
-//         { name: "Manage Batch", href: "/dashboard/create-batch"},
-//         { name: "Manage Notice", href: "/dashboard/notice"},
-//         { name: "Create Blog", href: "dashboard/create-blog"},
-//     ];
-
-//     return (
-//         <div className="flex min-h-screen">
-
-//             {/* SIDEBAR */}
-//             <aside className="w-64 bg-indigo-900 text-white p-5">
-//                 <h2 className="text-2xl font-bold mb-8">Admin Dashboard</h2>
-
-//                 <nav className="flex flex-col gap-2">
-//                     {navLinks.map((link) => (
-//                         <Link
-//                             key={link.href}
-//                             href={link.href}
-//                             className={`px-4 py-2 rounded-md transition-all
-//         ${pathname === link.href
-//                                     ? "bg-blue-500 text-white"
-//                                     : "hover:bg-slate-700"
-//                                 }`}
-//                         >
-//                             {link.name}
-//                         </Link>
-//                     ))}
-//                 </nav>
-//             </aside>
-
-//             {/* MAIN CONTENT */}
-//             <main className="flex-1 bg-gray-100 p-8">
-//                 {children}
-//             </main>
-//         </div>
-//     );
-// };
-
-// export default DashboardLayout;
 
 "use client";
 
@@ -280,12 +223,12 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       )}
 
       {/* SIDEBAR - Desktop */}
-      <aside
-        className={`fixed md:relative z-40 bg-gradient-to-b from-indigo-900 to-indigo-800 text-white transition-all duration-300 ease-in-out
-                    ${isSidebarOpen ? "w-72" : "w-20"} 
-                    ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
-                    flex flex-col h-full min-h-screen shadow-2xl`}
-      >
+<aside
+  className={`fixed md:sticky top-0 z-30 bg-gradient-to-b from-indigo-900 to-indigo-800 text-white transition-all duration-300 ease-in-out
+              ${isSidebarOpen ? "w-72" : "w-20"} 
+              ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+              flex flex-col h-screen shadow-2xl`}
+              >
         {/* Logo & Header */}
         <div
           className={`p-6 border-b border-indigo-700/50 ${!isSidebarOpen && "md:px-3"}`}
@@ -419,7 +362,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         className={`flex-1 transition-all duration-300`}
       >
         {/* Top Navbar */}
-        <div className="bg-white shadow-sm sticky top-0 z-20">
+        <div className="bg-white shadow-sm sticky top-0 z-auto">
           <div className="flex justify-between items-center px-6 py-4">
             <div className="flex items-center space-x-4">
               <h2 className="text-xl font-semibold text-gray-800 hidden md:block">

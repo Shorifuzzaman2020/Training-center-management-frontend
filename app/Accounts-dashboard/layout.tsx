@@ -95,7 +95,7 @@ const AccountsDashboardLayout = ({
     },
     {
       name: "Manage Admission",
-      href: "/admission-management",
+      href: "/Accounts-dashboard/admission-management",
       icon: <LayoutDashboard className="w-4 h-4" />,
     },
     {
